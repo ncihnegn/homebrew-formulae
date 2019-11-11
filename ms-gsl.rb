@@ -1,4 +1,4 @@
-class CppGsl < Formula
+class MsGsl < Formula
   desc "Microsoft's C++ Guidelines Support Library"
   homepage "https://github.com/Microsoft/GSL"
   head "https://github.com/ncihnegn/GSL.git"
