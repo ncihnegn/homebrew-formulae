@@ -1,7 +1,7 @@
 class Pprint < Formula
   desc "Pretty printer for modern C++"
   homepage "https://github.com/p-ranav/pprint"
-  head "https://github.com/p-ranav/pprint.git"
+  head "https://github.com/ncihnegn/pprint.git"
 
   depends_on :macos => :high_sierra # needs C++17
   depends_on "cmake" => :build
