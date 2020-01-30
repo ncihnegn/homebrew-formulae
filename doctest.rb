@@ -1,7 +1,8 @@
 class Doctest < Formula
   desc "Fast feature-rich C++1x single-header testing framework"
   homepage "https://github.com/onqtam/doctest"
-  url "https://github.com/onqtam/doctest/archive/2.3.5.tar.gz"
+  url "https://github.com/onqtam/doctest/archive/2.3.6.tar.gz"
+  head "https://github.com/onqtam/doctest.git"
 
   depends_on "cmake" => :build
 

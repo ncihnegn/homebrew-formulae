@@ -1,7 +1,7 @@
 class Cli11 < Formula
   desc "A command line parser for C++11 and beyond"
   homepage "https://github.com/CLIUtils/CLI11"
-  url "https://github.com/CLIUtils/CLI11/archive/v1.8.0.tar.gz"
+  url "https://github.com/CLIUtils/CLI11/archive/v1.9.0.tar.gz"
   head "https://github.com/CLIUtils/CLI11.git"
 
   depends_on "cmake" => :build

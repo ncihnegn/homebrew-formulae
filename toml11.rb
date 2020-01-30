@@ -1,7 +1,8 @@
 class Toml11 < Formula
   desc "TOML for modern c++"
   homepage "https://github.com/ToruNiina/toml11"
-  url "https://github.com/ToruNiina/toml11/archive/v3.1.0.tar.gz"
+  url "https://github.com/ToruNiina/toml11/archive/v3.3.0.tar.gz"
+  head "https://github.com/ToruNiina/toml11.git"
 
   depends_on "cmake" => :build
 
