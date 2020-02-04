@@ -6,7 +6,7 @@ class Systemc < Formula
   depends_on "cmake" => :build
 
   def install
-    system "cmake", "-Bbuild", ".", "-std=c++17", *std_cmake_args
+    system "cmake", "-Bbuild", ".", "-DCMAKE_CXX_STANDARD=17", *std_cmake_args
     system "cmake", "--build", "build", "--target", "install"
   end
 
