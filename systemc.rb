@@ -3,19 +3,16 @@ class Systemc < Formula
   homepage "https://accellera.org/"
   url "https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.tar.gz"
 
+  depends_on "cmake" => :build
 
   def install
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--with-arch-suffix=",
-                          "--prefix=#{prefix}"
-    system "make", "install"
+    system "cmake", "-Bbuild", ".", "-std=c++17", *std_cmake_args
+    system "cmake", "--build", "build", "--target", "install"
   end
 
   test do
     (testpath/"test.cpp").write <<~EOS
-      #include "systemc.h"
+      #include <systemc>
 
       int sc_main(int argc, char *argv[]) {
         return 0;
