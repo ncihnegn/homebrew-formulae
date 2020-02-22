@@ -1,6 +1,7 @@
 class MsGsl < Formula
   desc "Microsoft's C++ Guidelines Support Library"
   homepage "https://github.com/Microsoft/GSL"
+  url "https://github.com/Microsoft/GSL/archive/v2.1.0.tar.gz"
   head "https://github.com/ncihnegn/GSL.git"
 
   depends_on "cmake" => :build
