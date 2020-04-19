@@ -14,8 +14,10 @@ jobs:
       - name: Build
         run: brew install --build-bottle toml11 && brew bottle toml11
       - name: Upload
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: svenstaro/upload-release-action@master
         with:
-          args: '*.bottle.tar.gz'
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: '*.bottle.tar.gz'
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
