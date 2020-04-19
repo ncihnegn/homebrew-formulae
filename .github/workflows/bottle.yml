@@ -1,0 +1,21 @@
+name: Build and publish bottles
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout
+      - name: Build
+        uses: skx/github-action-build
+        with:
+          builder: .github/build.sh
+      - name: Upload
+        uses: skx/github-action-publish-binaries
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: '*.bottle.tar.gz'
