@@ -4,6 +4,10 @@ class Toml11 < Formula
   url "https://github.com/ToruNiina/toml11/archive/v3.4.0.tar.gz"
   head "https://github.com/ToruNiina/toml11.git"
 
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/toml11-3.4.0"
+  end
+
   depends_on "cmake" => :build
 
   def install
