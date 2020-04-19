@@ -15,8 +15,9 @@ jobs:
       - name: Build
         id: build
         run: |
-          package=$(echo ${{ github.ref }} | cut -d'-' -f1)
-          version=$(echo ${{ github.ref }} | cut -d'-' -f2)
+          tag=$(echo ${{ github.ref }} | cut -c11-)
+          package=$(echo ${tag} | cut -d'-' -f1)
+          version=$(echo ${tag} | cut -d'-' -f2)
           brew install --build-bottle ${package} && brew bottle ${package}
           echo ::set-output name=file_name::${package}--${version}.catalina.bottle.tar.gz
       - name: Release
