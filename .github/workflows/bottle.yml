@@ -16,5 +16,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2-preview
         with:
-          path: *.bottle.tar.gz
+          path: ./*.bottle.tar.gz
           name: bottles
