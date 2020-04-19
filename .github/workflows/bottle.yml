@@ -9,10 +9,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@master
+      - name: Prepare
+        run: brew upgrade && brew tap ncihnegn/homebrew-formulae
       - name: Build
-        uses: skx/github-action-build@master
-        with:
-          builder: .github/build.sh
+        run: brew install --build-bottle toml11 && brew bottle toml11
       - name: Upload
         uses: skx/github-action-publish-binaries@master
         env:
