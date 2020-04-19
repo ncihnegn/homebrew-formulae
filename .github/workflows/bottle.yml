@@ -8,16 +8,13 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Prepare
         run: brew upgrade && brew tap ncihnegn/homebrew-formulae
       - name: Build
         run: brew install --build-bottle toml11 && brew bottle toml11
       - name: Upload
-        uses: svenstaro/upload-release-action@master
+        uses: actions/upload-artifact@v2-preview
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: '*.bottle.tar.gz'
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
+          path: *.bottle.tar.gz
+          name: bottles
