@@ -3,7 +3,7 @@ name: Build and publish bottles
 on:
   create:
     tags:
-      - '*-*'
+      - '*:*'
 
 jobs:
   release:
@@ -15,27 +15,33 @@ jobs:
       - name: Build
         id: build
         run: |
-          tag=$(echo ${{ github.ref }} | cut -c11-)
+          tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo ${tag} | cut -d':' -f1)
           version=$(echo ${tag} | cut -d':' -f2)
-          brew install --build-bottle ${package} && brew bottle ${package}
+          brew install --build-bottle ${package}
+          sha=$(brew bottle ${package} | grep sha256)
+          sed -i.bak "s/bottle do/bottle do ${sha}/" ${package}.rb
+          git config --local user.name "${{steps.env.outputs.name}}"
+          git config --local user.name "${{steps.env.outputs.email}}"
+          git add ${package}.rb
+          git commit -m "Add checksum"
           echo ::set-output name=file_name::${package}--${version}.catalina.bottle.tar.gz
       - name: Release
         id: release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{github.ref}}
+          release_name: ${{github.ref}}
           draft: false
           prerelease: false
       - name: Upload
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: ${{ steps.build.outputs.file_name}}
-          asset_name: ${{ steps.build.outputs.file_name}}
+          upload_url: ${{steps.release.outputs.upload_url}}
+          asset_path: ${{steps.build.outputs.file_name}}
+          asset_name: ${{steps.build.outputs.file_name}}
           asset_content_type: application/tar+gzip

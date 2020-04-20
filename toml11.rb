@@ -5,7 +5,7 @@ class Toml11 < Formula
   head "https://github.com/ToruNiina/toml11.git"
 
   bottle do
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/toml11-3.4.0"
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/toml11:3.4.0"
   end
 
   depends_on "cmake" => :build

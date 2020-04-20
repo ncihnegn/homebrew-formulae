@@ -6,6 +6,10 @@ class MsGsl < Formula
 
   depends_on "cmake" => :build
 
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/ms-gsl:2.1.0"
+  end
+
   def install
     system "cmake", ".", "-DGSL_TEST=false", *std_cmake_args
     system "make", "install"
