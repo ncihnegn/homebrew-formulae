@@ -15,23 +15,18 @@ jobs:
       - name: Build
         id: build
         run: |
-          tag=$(echo ${{github.ref}} | cut -c11-)
-          package=$(echo ${tag} | cut -d'-' -f1)
-          version=$(echo ${tag} | cut -d'-' -f2)
+          package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           brew install --build-bottle ${package}
           bottle=$(brew bottle ${package})
-          echo ${bottle}
-          checksum=$(echo ${bottle}| grep sha256)
-          rebuild=$(echo ${bottle}| grep "rebuild ")
-          [ $rebuild != "" ] && rebuildid=$(echo ${rebuild} | cut -c12-)
-          sed -i.bak "s/.*sha256.*/${checksum}${rebuild}/" ${package}.rb
+          file_name=$(echo ${bottle} | sed -e 's/\(.*.tar.gz\)/\1/')
+          dsl=$(echo ${bottle} | sed -e 's/bottles-formulae.\(.*\)end/\1/')
+          sed -i.bak "s/.*sha256.*/${dsl}/" ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.name "github-action@users.noreply.github.com"
           git add ${package}.rb
-          git commit -m "Add checksum"
+          git commit -m "Add bottle DSL"
           git push
-          [ $rebuildid != "" ] && rebuilid+="."
-          echo ::set-output name=file_name::${package}--${version}.catalina.bottle${rebuildid}.tar.gz
+          echo ::set-output name=file_name::${file_name}
       - name: Release
         id: release
         uses: actions/create-release@v1
