@@ -18,8 +18,11 @@ jobs:
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           brew install --build-bottle ${package}
           bottle=$(brew bottle ${package})
+          echo ${bottle}
           file_name=$(echo ${bottle} | sed -e 's/\(.*.tar.gz\)/\1/')
+          echo ${file_name}
           dsl=$(echo ${bottle} | sed -e 's/bottles-formulae.\(.*\)end/\1/')
+          echo ${dsl}
           sed -i.bak "s/.*sha256.*/${dsl}/" ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.name "github-action@users.noreply.github.com"
