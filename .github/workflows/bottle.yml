@@ -21,8 +21,8 @@ jobs:
           brew install --build-bottle ${package}
           sha=$(brew bottle ${package} | grep sha256)
           sed -i.bak "s/.*sha256.*/${sha}/" ${package}.rb
-          git config --local user.name "${{steps.env.outputs.name}}"
-          git config --local user.name "${{steps.env.outputs.email}}"
+          git config --global user.name "GitHub Action"
+          git config --global user.name "github-action@users.noreply.github.com"
           git add ${package}.rb
           git commit -m "Add checksum"
           echo ::set-output name=file_name::${package}--${version}.catalina.bottle.tar.gz
