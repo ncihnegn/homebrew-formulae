@@ -33,6 +33,7 @@ jobs:
           file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           echo ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*do \(.*\)end/\1/')
+          echo ${SHELL}
           echo ${dsl:q}
           sed -i.bak "s/root_url.*/${dsl:q}/" ${package}.rb
           git config --global user.name "GitHub Action"
