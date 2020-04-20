@@ -6,7 +6,6 @@ class Toml11 < Formula
 
   bottle do
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/toml11-3.4.0"
-    sha256 "3cd928d9389d6f91bd5f4f5d15e7721e7f4fd318a2f3c5d663d56da75cfdedf0" => :catalina
   end
 
   depends_on "cmake" => :build
