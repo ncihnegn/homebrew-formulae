@@ -3,7 +3,7 @@ name: Build and publish bottles
 on:
   create:
     tags:
-      - '*:*'
+      - '*-*'
 
 jobs:
   release:
@@ -16,11 +16,11 @@ jobs:
         id: build
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
-          package=$(echo ${tag} | cut -d':' -f1)
-          version=$(echo ${tag} | cut -d':' -f2)
+          package=$(echo ${tag} | cut -d'-' -f1)
+          version=$(echo ${tag} | cut -d'-' -f2)
           brew install --build-bottle ${package}
           sha=$(brew bottle ${package} | grep sha256)
-          sed -i.bak "s/bottle do/bottle do ${sha}/" ${package}.rb
+          sed -i.bak "s/.*sha256.*/${sha}/" ${package}.rb
           git config --local user.name "${{steps.env.outputs.name}}"
           git config --local user.name "${{steps.env.outputs.email}}"
           git add ${package}.rb

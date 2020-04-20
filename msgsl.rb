@@ -7,7 +7,8 @@ class MsGsl < Formula
   depends_on "cmake" => :build
 
   bottle do
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/ms-gsl:2.1.0"
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/msgsl-2.1.0"
+    sha256 "3cd928d9389d6f91bd5f4f5d15e7721e7f4fd318a2f3c5d663d56da75cfdedf0" => :catalina
   end
 
   def install
