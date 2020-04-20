@@ -25,9 +25,10 @@ jobs:
       - name: Build
         id: build
         run: |
-          package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
+          tag=$(echo ${{github.ref}} | cut -c11-)
+          package=$(echo $tag | cut -d'-' -f1)
           brew install --build-bottle ${package}
-          bottle=$(brew bottle ${package} --root-url ${{steps.release.outputs.upload_url}})
+          bottle=$(brew bottle ${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           echo ${bottle}
           file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           echo ${file_name}
