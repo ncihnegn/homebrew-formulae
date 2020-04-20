@@ -29,7 +29,9 @@ jobs:
           package=$(echo $tag | cut -d'-' -f1)
           brew install --build-bottle ${package}
           bottle=$(brew bottle ${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
-          file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
+          dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
+          file_name=${dash_file_name/--/-}
+          mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*do \(.*\)end/\1/')
           echo ${dsl}
           dsl=$(printf '%q' "${dsl}")
