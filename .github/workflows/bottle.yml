@@ -29,14 +29,13 @@ jobs:
           package=$(echo $tag | cut -d'-' -f1)
           brew install --build-bottle ${package}
           bottle=$(brew bottle ${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
-          echo ${bottle}
           file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
-          echo ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*do \(.*\)end/\1/')
           echo ${dsl}
           dsl=$(printf '%q' "${dsl}")
           echo ${dsl}
           sed -i.bak "s#root_url.*#${dsl}#" ${package}.rb
+          sed -i.bak -e 's/cellar/\'$'\n    &/' 's/rebuild/\'$'\n    &/' 's/sha256/\'$'\n    &/' ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.email "github-action@users.noreply.github.com"
           git add ${package}.rb
