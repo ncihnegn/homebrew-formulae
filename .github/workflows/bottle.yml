@@ -19,13 +19,17 @@ jobs:
           package=$(echo ${tag} | cut -d'-' -f1)
           version=$(echo ${tag} | cut -d'-' -f2)
           brew install --build-bottle ${package}
-          sha=$(brew bottle ${package} | grep sha256)
-          sed -i.bak "s/.*sha256.*/${sha}/" ${package}.rb
+          bottle=$(brew bottle ${package})
+          checksum=$echo ${bottle}| grep sha256)
+          rebuild=$echo ${bottle}| grep rebuild)
+          [ $rebuild != "" ] && rebuildid=$(echo ${rebuild} | cut -c12-)
+          sed -i.bak "s/.*sha256.*/${checksum}${rebuild}/" ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.name "github-action@users.noreply.github.com"
           git add ${package}.rb
           git commit -m "Add checksum"
-          echo ::set-output name=file_name::${package}--${version}.catalina.bottle.tar.gz
+          [ $rebuildid != "" ] && rebuilid+="."
+          echo ::set-output name=file_name::${package}--${version}.catalina.bottle${rebuildid}.tar.gz
       - name: Release
         id: release
         uses: actions/create-release@v1
