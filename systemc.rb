@@ -3,6 +3,9 @@ class Systemc < Formula
   homepage "https://accellera.org/"
   url "https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.tar.gz"
 
+  bottle do
+  end
+
   depends_on "cmake" => :build
 
   def install
