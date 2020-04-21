@@ -44,6 +44,7 @@ jobs:
           asset_name: ${{steps.build.outputs.file_name}}
           asset_content_type: application/tar+gzip
       - name: Commit
+        run: |
           echo ${{steps.build.outputs.dsll}}
           dsl=$(echo ${steps.build.outputs.dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
           echo ${dsl}
