@@ -3,8 +3,6 @@ class Llvm9 < Formula
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz"
   homepage "http://llvm.org/"
 
-  keg_only :versioned_formula
-
   version = "9.0.1"
 
   stable do
