@@ -3,7 +3,11 @@ class Systemc < Formula
   homepage "https://accellera.org/"
   url "https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.tar.gz"
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/systemc-2.3.3" 
+    cellar :any 
+    rebuild 1 
+    sha256 "bb9104380fee3563794d97cd130a7b10bc4d3ab716ebcf8595b9cddbe5c52490" => :catalina 
   end
 
   depends_on "cmake" => :build
