@@ -32,11 +32,11 @@ jobs:
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           file_name=${dash_file_name/--/-}
           mv ${dash_file_name} ${file_name}
-          dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*\)end/\1/')
+          dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
           echo ${dsl}
           dsl=$(printf '%q' "${dsl}")
           echo ${dsl}
-          sed -i.bak "s#bottle do.*#${dsl}#" ${package}.rb
+          perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/sha256/\'$'\n    &/' ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.email "github-action@users.noreply.github.com"
