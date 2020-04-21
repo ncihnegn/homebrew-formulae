@@ -4,6 +4,9 @@ class Cli11 < Formula
   url "https://github.com/CLIUtils/CLI11/archive/v1.9.0.tar.gz"
   head "https://github.com/CLIUtils/CLI11.git"
 
+  bottle do
+  end
+
   depends_on "cmake" => :build
 
   def install
