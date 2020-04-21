@@ -34,7 +34,9 @@ jobs:
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
           echo ${dsl}
-          perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
+          dsl=$(echo ${dsl} | sed 's/"/\\"/g')
+          echo ${dsl}
+          perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" ${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/sha256/\'$'\n    &/' ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.email "github-action@users.noreply.github.com"
