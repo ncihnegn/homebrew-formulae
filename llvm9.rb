@@ -1,4 +1,4 @@
-class LlvmAT9 < Formula
+class Llvm9 < Formula
   desc "Next-gen compiler infrastructure"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz"
   homepage "http://llvm.org/"
