@@ -33,6 +33,9 @@ jobs:
           file_name=${dash_file_name/--/-}
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
+          echo ${dsl}
+          dsl=$(echo ${dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
+          echo ${dsl}
           echo ::set-output name=file_name::${file_name}
           echo ::set-output name=dsl::${dsl}
       - name: Upload
@@ -46,8 +49,8 @@ jobs:
           asset_content_type: application/tar+gzip
       - name: Commit
         run: |
-          dsl=${steps.build.output.dsl/"/\\"}
-          dsl=${dsl//\//\\/}
+          dsl=${{steps.build.output.dsl}
+          echo ${dsl}
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
