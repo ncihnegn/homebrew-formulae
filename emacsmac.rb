@@ -4,8 +4,7 @@ class Emacsmac < Formula
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.3-mac-7.9.tar.gz"
   version "7.9"
   
-  bottle do
-  end
+  
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -62,6 +61,7 @@ class Emacsmac < Formula
       url "https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/#{icon}.icns"
       
     
+    
     sha256 sha
     end
   end
@@ -70,11 +70,13 @@ class Emacsmac < Formula
     url "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
     
     
+    
     sha256 "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5"
   end
 
   resource "spacemacs-icon" do
     url "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
+    
     
     
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
@@ -85,6 +87,7 @@ class Emacsmac < Formula
       url "https://gist.github.com/railwaycat/fd3b98f1cfbded5113dd4e307b7ae84c/raw/4354ee8213c0c69bec8d9c77f01d3830d3c1d009/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
       
     
+    
     sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
@@ -93,6 +96,7 @@ class Emacsmac < Formula
     patch do
       url "https://gist.github.com/lululau/f2e6314a14cc95586721272dd85a7c51/raw/f5a92d3e654cc41d0eab2b229a98ed63da82ee1c/emacs-mac-title-bar-7.4.patch"
       
+    
     
     sha256 '5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897'
     end
