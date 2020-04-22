@@ -46,8 +46,8 @@ jobs:
           asset_content_type: application/tar+gzip
       - name: Commit
         run: |
-          echo ${{steps.build.outputs.dsll}}
-          dsl=$(echo ${steps.build.outputs.dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
+          echo ${{steps.build.outputs.dsl}}
+          dsl=$(echo ${{steps.build.outputs.dsl}} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
           echo ${dsl}
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
