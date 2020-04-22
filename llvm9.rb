@@ -146,7 +146,7 @@ class Llvm9 < Formula
       -DLLVM_PARALLEL_COMPILE_JOBS=2
       -DWITH_POLLY=OFF
       -DLINK_POLLY_INTO_TOOLS=OFF
-      -DLLVM_TARGETS_TO_BUILD="X86"
+      -DLLVM_TARGETS_TO_BUILD=X86
     ]
 
     mkdir "build" do
