@@ -3,8 +3,11 @@ class Emacsmac < Formula
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-26.3-mac-7.9.tar.gz"
   version "7.9"
-  
-  
+
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-7.9"
+    sha256 "b9588ed46c7f848411adf288222244046860ae6858d84e4745294ce4ca75f5d0" => :catalina
+  end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
