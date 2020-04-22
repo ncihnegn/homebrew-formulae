@@ -128,6 +128,7 @@ class Llvm9 < Formula
     args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{install_prefix}
+      -DCOMPILER_RT_INCLUDE_TESTS=OFF
       -DFFI_INCLUDE_DIR=#{Formula["libffi"].opt_lib}/libffi-#{Formula["libffi"].version}/include
       -DFFI_LIBRARY_DIR=#{Formula["libffi"].opt_lib}
       -DLIBOMP_ARCH=x86_64
@@ -139,7 +140,10 @@ class Llvm9 < Formula
       -DLLVM_ENABLE_LIBCXX=ON
       -DLLVM_ENABLE_FFI=ON
       -DLLVM_ENABLE_RTTI=ON
+      -DLLVM_INCLUDE_BENCHMARKS=OFF
       -DLLVM_INCLUDE_DOCS=OFF
+      -DLLVM_INCLUDE_EXAMPLES=OFF
+      -DLLVM_INCLUDE_TESTS=OFF
       -DLLVM_INSTALL_UTILS=ON
       -DLLVM_LINK_LLVM_DYLIB=ON
       -DLLVM_OPTIMIZED_TABLEGEN=ON
