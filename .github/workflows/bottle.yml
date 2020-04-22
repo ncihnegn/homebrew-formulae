@@ -33,7 +33,8 @@ jobs:
           file_name=${dash_file_name/--/-}
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
-          echo ::set-output name=file_name::${file_name} name=dsl::${dsl}
+          echo ::set-output name=file_name::${file_name}
+          echo ::set-output name=dsl::${dsl}
       - name: Upload
         uses: actions/upload-release-asset@v1
         env:
