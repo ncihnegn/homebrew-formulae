@@ -19,10 +19,10 @@ class Llvm9 < Formula
     #  sha256 "b26fd72a78bd7db998a26270ec9ec6a01346651d88fa87b4b323e13049fb6f07"
     #end
 
-    resource "compiler-rt" do
-      url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/compiler-rt-#{version}.src.tar.xz"
-      sha256 "c2bfab95c9986318318363d7f371a85a95e333bc0b34fbfa52edbd3f5e3a9077"
-    end
+    #resource "compiler-rt" do
+    #  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/compiler-rt-#{version}.src.tar.xz"
+    #  sha256 "c2bfab95c9986318318363d7f371a85a95e333bc0b34fbfa52edbd3f5e3a9077"
+    #end
 
     #resource "polly" do
     #  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-#{version}/polly-#{version}.src.tar.xz"
@@ -121,7 +121,7 @@ class Llvm9 < Formula
     #(buildpath/"tools/clang/tools/extra").install resource("clang-tools-extra")
     #(buildpath/"projects/openmp").install resource("openmp")
     #(buildpath/"projects/libunwind").install resource("libunwind")
-    (buildpath/"projects/compiler-rt").install resource("compiler-rt")
+    #(buildpath/"projects/compiler-rt").install resource("compiler-rt")
 
     install_prefix = lib/"llvm-#{ver}"
 
@@ -132,7 +132,7 @@ class Llvm9 < Formula
       -DFFI_INCLUDE_DIR=#{Formula["libffi"].opt_lib}/libffi-#{Formula["libffi"].version}/include
       -DFFI_LIBRARY_DIR=#{Formula["libffi"].opt_lib}
       -DLIBOMP_ARCH=x86_64
-      -DLLVM_BUILD_EXTERNAL_COMPILER_RT=ON
+      -DLLVM_BUILD_EXTERNAL_COMPILER_RT=OFF
       -DLLVM_BUILD_LLVM_DYLIB=ON
       -DLLVM_CREATE_XCODE_TOOLCHAIN=OFF
       -DLLVM_ENABLE_ASSERTIONS=ON
