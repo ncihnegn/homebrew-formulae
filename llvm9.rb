@@ -157,7 +157,7 @@ class Llvm9 < Formula
       system "cmake", "-G", "Unix Makefiles", "..", *(std_cmake_args + args)
       system "make"
       system "make", "install"
-      system "make", "install-xcode-toolchain"
+      #system "make", "install-xcode-toolchain"
     end
 
     #(share/"clang-#{ver}/tools").install Dir["tools/clang/tools/scan-{build,view}"]
