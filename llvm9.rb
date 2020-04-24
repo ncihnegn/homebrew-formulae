@@ -99,7 +99,7 @@ class Llvm9 < Formula
 
   # version suffix
   def ver
-    "9"
+    #{version}.split('.')[0]
   end
 
   # http://releases.llvm.org/9.0.0/docs/CMake.html
@@ -126,14 +126,14 @@ class Llvm9 < Formula
     #(buildpath/"projects/libunwind").install resource("libunwind")
     #(buildpath/"projects/compiler-rt").install resource("compiler-rt")
 
-    install_prefix = lib/"llvm-#{ver}"
+    install_prefix = lib/"llvm#{ver}"
 
     args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{install_prefix}
       -DCOMPILER_RT_INCLUDE_TESTS=OFF
-      -DFFI_INCLUDE_DIR=#{Formula["libffi"].opt_lib}/libffi-#{Formula["libffi"].version}/include
-      -DFFI_LIBRARY_DIR=#{Formula["libffi"].opt_lib}
+      -DFFI_INCLUDE_DIR=/usr/local/opt/libffi/include
+      -DFFI_LIBRARY_DIR=/usr/local/opt/libffi/lib
       -DLIBOMP_ARCH=x86_64
       -DLLVM_BUILD_EXTERNAL_COMPILER_RT=OFF
       -DLLVM_BUILD_LLVM_DYLIB=ON

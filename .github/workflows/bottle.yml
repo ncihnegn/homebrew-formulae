@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
-        run: brew tap ${{github.repository}}
+        run: brew tap ${{github.repository}} && brew upgrade
       - name: Release
         id: release
         uses: actions/create-release@v1
@@ -28,6 +28,8 @@ jobs:
           tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo $tag | cut -d'-' -f1)
           brew install --build-bottle ${{github.repository}}/${package}
+          brew info libffi
+          brew list libffi
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           file_name=${dash_file_name/--/-}
