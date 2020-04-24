@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Prepare
-        run: brew tap ${{github.repository}} && brew upgrade
+        run: brew tap ${{github.repository}} && brew update && brew upgrade && brew install libffi
       - name: Release
         id: release
         uses: actions/create-release@v1
@@ -51,8 +51,7 @@ jobs:
           asset_content_type: application/tar+gzip
       - name: Commit
         run: |
-          dsl=${{steps.build.outputs.dsl}}
-          echo ${dsl}
+          dsl="${{steps.build.outputs.dsl}}"
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
