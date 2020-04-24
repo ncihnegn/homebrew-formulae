@@ -10,8 +10,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Prepare
-        run: brew tap ${{github.repository}} && brew update && brew upgrade && brew install libffi
       - name: Release
         id: release
         uses: actions/create-release@v1
@@ -22,6 +20,11 @@ jobs:
           release_name: ${{github.ref}}
           draft: false
           prerelease: false
+      - name: Prepare
+        run: |
+          tag=$(echo ${{github.ref}} | cut -c11-)
+          package=$(echo $tag | cut -d'-' -f1)
+          brew tap ${{github.repository}} && brew update && brew upgrade $(brew deps ${{github.repository}}/${package})
       - name: Build
         id: build
         run: |
