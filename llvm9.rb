@@ -100,7 +100,7 @@ class Llvm9 < Formula
 
   # version suffix
   def ver
-    #{version}.split(/\./)[0]
+    "#{version}".split(/\./)[0]
   end
 
   # http://releases.llvm.org/9.0.0/docs/CMake.html
