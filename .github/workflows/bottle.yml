@@ -60,7 +60,6 @@ jobs:
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
           git config --global user.name "GitHub Action"
           git config --global user.email "github-action@users.noreply.github.com"
-          git pull
           git add ${package}.rb
           git commit -m "Add ${tag} bottle DSL"
           git push origin HEAD:master
