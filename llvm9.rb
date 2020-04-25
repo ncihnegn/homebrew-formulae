@@ -53,8 +53,7 @@ class Llvm9 < Formula
   bottle do
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm9-9.0.1"
     cellar :any
-    rebuild 1
-    sha256 "4506d73b4a243c295bf545cdb0b3e0cf445bc8fb91c3d88f864ccc86e62a671c" => :catalina
+    sha256 "2f3cd9ad82f3c9f9a4fcdbb79930191caaead9f4ef7ad30ae048c90650b9d932" => :catalina
   end
 
   head do
