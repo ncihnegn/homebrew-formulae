@@ -1,5 +1,6 @@
 cask 'font-ligalex-mono' do
   version '4'
+  sha256 'b09f87d1a4ce154894cf43e818a214d87ad4962dd4cb7668a7c0c5f177eaf21a'
 
   url "https://github.com/ToxicFrog/Ligaturizer/releases/download/v#{version}/LigaturizedFonts.zip"
   name 'Ligalex Mono'
