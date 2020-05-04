@@ -53,7 +53,7 @@ class Llvm9 < Formula
   bottle do
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm9-9.0.1"
     cellar :any
-    sha256 "d4800dca177d2bf7fa7f1f45f3d1bfc69f4557b4fceaf1637fb48cc5bea2b8c1" => :catalina
+    sha256 "2f3cd9ad82f3c9f9a4fcdbb79930191caaead9f4ef7ad30ae048c90650b9d932" => :catalina
   end
 
   head do
@@ -99,13 +99,14 @@ class Llvm9 < Formula
 
   # version suffix
   def ver
-    #{version}.split('.')[0]
+    "#{version}".split(/\./)[0]
   end
 
   # http://releases.llvm.org/9.0.0/docs/CMake.html
   def install
     # Apple's libstdc++ is too old to build LLVM
     ENV.libcxx if ENV.compiler == :clang
+    puts "ver: #{ver}"
 
     # compiler-rt has some iOS simulator features that require i386 symbols. I'm
     # assuming the rest of clang also needs support for 32-bit compilation to

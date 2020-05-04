@@ -31,8 +31,6 @@ jobs:
           tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo $tag | cut -d'-' -f1)
           brew install --build-bottle ${{github.repository}}/${package}
-          brew info libffi
-          brew list libffi
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           file_name=${dash_file_name/--/-}
@@ -54,12 +52,12 @@ jobs:
           asset_content_type: application/tar+gzip
       - name: Commit
         run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "github-action@users.noreply.github.com"
           dsl="${{steps.build.outputs.dsl}}"
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
-          git config --global user.name "GitHub Action"
-          git config --global user.email "github-action@users.noreply.github.com"
           git add ${package}.rb
           git commit -m "Add ${tag} bottle DSL"
-          git push origin HEAD:master
+          git push
