@@ -3,7 +3,7 @@ class Macvim < Formula
   desc "GUI for vim, made for macOS"
   homepage "https://github.com/macvim-dev/macvim"
   url "https://github.com/macvim-dev/macvim/archive/snapshot-163.tar.gz"
-  version "8.2-163"
+  version "8.2.163"
   sha256 "3af72f22b25cf4f94b1b6e27a74d74bdefa8ed1529fe6edec59ae2756b3ca209"
   revision 1
   head "https://github.com/macvim-dev/macvim.git"
