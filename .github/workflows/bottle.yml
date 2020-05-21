@@ -61,4 +61,4 @@ jobs:
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
           git add ${package}.rb
           git commit -m "Add ${tag} bottle DSL"
-          git push
+          git push origin HEAD:master
