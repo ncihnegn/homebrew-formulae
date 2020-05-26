@@ -3,14 +3,11 @@ class Macvim < Formula
   desc "GUI for vim, made for macOS"
   homepage "https://github.com/macvim-dev/macvim"
   url "https://github.com/macvim-dev/macvim/archive/snapshot-163.tar.gz"
-  version "8.2.163"
+  version "8.2.539"
   sha256 "3af72f22b25cf4f94b1b6e27a74d74bdefa8ed1529fe6edec59ae2756b3ca209"
   head "https://github.com/macvim-dev/macvim.git"
 
   bottle do
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/macvim-8.2.163"
-    cellar :any
-    sha256 "4c437b500ff4440ff0b666a542aacd9d8dbbd87b8e0b41a3349cd6cfcc5a9f0f" => :catalina
   end
 
   depends_on :xcode => :build
@@ -32,7 +29,6 @@ class Macvim < Formula
 
     system "./configure", "--with-features=huge",
                           "--enable-multibyte",
-                          "--with-macarchs=#{MacOS.preferred_arch}",
                           "--enable-perlinterp",
                           "--enable-rubyinterp",
                           "--enable-tclinterp",
