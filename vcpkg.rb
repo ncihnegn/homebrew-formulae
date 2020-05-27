@@ -7,7 +7,7 @@ class Vcpkg < Formula
   depends_on "cmake"
   depends_on "ninja"
 
-  bottle begin
+  bottle do
   end
 
   def install
