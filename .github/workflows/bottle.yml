@@ -30,6 +30,7 @@ jobs:
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo $tag | cut -d'-' -f1)
+          brew unlink ${package}
           brew install --build-bottle ${{github.repository}}/${package}
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
