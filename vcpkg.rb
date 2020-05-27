@@ -7,7 +7,10 @@ class Vcpkg < Formula
   depends_on "cmake"
   depends_on "ninja"
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/vcpkg-2020.04" 
+    cellar :any_skip_relocation 
+    sha256 "151290b52c0635504710e8c14b8b2d1af5f470fd6a2796cd0cb7cf1cbeae690d" => :catalina
   end
 
   def install
