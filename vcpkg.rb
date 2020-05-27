@@ -11,7 +11,7 @@ class Vcpkg < Formula
   end
 
   def install
-    system "./bootstrap-vcpkg.sh", "-useSystemBinaries"
+    system "./bootstrap-vcpkg.sh", "-disableMetrics", "-useSystemBinaries", "-allowAppleClang"
     cp_r "#{buildpath}/.", prefix
     bin.install "./vcpkg"
   end
