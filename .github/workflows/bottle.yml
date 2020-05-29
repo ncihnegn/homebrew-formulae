@@ -26,8 +26,8 @@ jobs:
           package=$(echo $tag | cut -d'-' -f1)
           brew tap ${{github.repository}} && brew update
           deps=$(brew deps ${{github.repository}}/${package})
-          [[ ! -z "$deps" ]] && brew install ${deps} && \
-          brew upgrade ${deps}
+          ([[ ! -z "$deps" ]] && brew install ${deps} && \
+          brew upgrade ${deps}) || exit 0
       - name: Build
         id: build
         run: |
