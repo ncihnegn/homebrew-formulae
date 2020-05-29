@@ -4,10 +4,14 @@ class Macvim < Formula
   homepage "https://github.com/macvim-dev/macvim"
   url "https://github.com/macvim-dev/macvim/archive/snapshot-163.tar.gz"
   version "8.2.539"
-  sha256 "3af72f22b25cf4f94b1b6e27a74d74bdefa8ed1529fe6edec59ae2756b3ca209"
+  
+    sha256 "3af72f22b25cf4f94b1b6e27a74d74bdefa8ed1529fe6edec59ae2756b3ca209"
   head "https://github.com/macvim-dev/macvim.git"
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/macvim-8.2.539" 
+    cellar :any 
+    sha256 "b58bfb2b32a4b59afc5069918ce33da95cae63ba10017f184b0e95bbeca0f53d" => :catalina
   end
 
   depends_on :xcode => :build
