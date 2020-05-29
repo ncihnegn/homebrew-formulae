@@ -26,8 +26,7 @@ jobs:
           package=$(echo $tag | cut -d'-' -f1)
           brew tap ${{github.repository}} && brew update
           deps=$(brew deps ${{github.repository}}/${package})
-          ([[ ! -z "$deps" ]] && brew install ${deps} && \
-          brew upgrade ${deps}) || exit 0
+          ([[ ! -z "$deps" ]] && brew upgrade ${deps}) || exit 0
       - name: Build
         id: build
         run: |
@@ -37,7 +36,6 @@ jobs:
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
           file_name=${dash_file_name/--/-}
-          ls *.tar.gz
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
           dsl=$(echo ${dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
