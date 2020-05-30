@@ -1,14 +1,10 @@
 class Doctest < Formula
   desc "Fast feature-rich C++1x single-header testing framework"
   homepage "https://github.com/onqtam/doctest"
-  url "https://github.com/onqtam/doctest/archive/2.3.7.tar.gz"
+  url "https://github.com/onqtam/doctest/archive/2.3.8.tar.gz"
   head "https://github.com/onqtam/doctest.git"
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/doctest-2.3.7" 
-    cellar :any_skip_relocation 
-    rebuild 1 
-    sha256 "6283e6f271e3a47ae1342210bb6eb0504e3edc8e83c1764f57ab571f0a56b011" => :catalina
   end
 
   depends_on "cmake" => :build
