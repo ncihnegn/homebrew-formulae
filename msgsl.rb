@@ -7,6 +7,9 @@ class Msgsl < Formula
   depends_on "cmake" => :build
 
   bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/msgsl-3.0.1" 
+    cellar :any_skip_relocation 
+    sha256 "782181adb74383c17541013c6e2f199961e4b6e68eb3c3efd5070a70dfab6815" => :catalina
   end
 
   def install
