@@ -4,7 +4,6 @@ class Pprint < Formula
   url "https://github.com/ncihnegn/pprint/archives/v1.0.0.tar.gz"
   head "https://github.com/ncihnegn/pprint.git"
 
-  depends_on :macos => :high_sierra # needs C++17
   depends_on "cmake" => :build
 
   bottle do
