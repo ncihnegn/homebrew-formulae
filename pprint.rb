@@ -6,7 +6,10 @@ class Pprint < Formula
 
   depends_on "cmake" => :build
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/pprint-1.0.0" 
+    cellar :any_skip_relocation 
+    sha256 "2b0ea22ea888d7eb9ba2ca1840ca321e02d7a0f37622f5a6f5c2563f8a4cac54" => :catalina
   end
 
   def install
