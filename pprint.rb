@@ -1,11 +1,14 @@
 class Pprint < Formula
   desc "Pretty printer for modern C++"
   homepage "https://github.com/p-ranav/pprint"
-  head "https://github.com/p-ranav/pprint/archives/v0.9.1.tar.gz"
+  head "https://github.com/ncihnegn/pprint/archives/v1.0.0.tar.gz"
   head "https://github.com/ncihnegn/pprint.git"
 
   depends_on :macos => :high_sierra # needs C++17
   depends_on "cmake" => :build
+
+  bottle do
+  end
 
   def install
     system "cmake", "-Bbuild", ".", "-DCMAKE_CXX_STANDARD=17", *std_cmake_args
