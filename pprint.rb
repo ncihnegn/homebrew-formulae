@@ -1,7 +1,7 @@
 class Pprint < Formula
   desc "Pretty printer for modern C++"
   homepage "https://github.com/p-ranav/pprint"
-  url "https://github.com/ncihnegn/pprint/archives/v1.0.0.tar.gz"
+  url "https://github.com/ncihnegn/pprint/archive/v1.0.0.tar.gz"
   head "https://github.com/ncihnegn/pprint.git"
 
   depends_on "cmake" => :build
