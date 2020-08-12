@@ -1,15 +1,12 @@
 class Msgsl < Formula
   desc "Microsoft's C++ Guidelines Support Library"
   homepage "https://github.com/Microsoft/GSL"
-  url "https://github.com/Microsoft/GSL/archive/v3.0.1.tar.gz"
+  url "https://github.com/Microsoft/GSL/archive/v3.1.0.tar.gz"
   head "https://github.com/ncihnegn/GSL.git"
 
   depends_on "cmake" => :build
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/msgsl-3.0.1" 
-    cellar :any_skip_relocation 
-    sha256 "782181adb74383c17541013c6e2f199961e4b6e68eb3c3efd5070a70dfab6815" => :catalina
   end
 
   def install
