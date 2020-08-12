@@ -2,10 +2,13 @@ class Glib < Formula
   desc "Core application library for C"
   homepage "https://developer.gnome.org/glib/"
   url "https://download.gnome.org/sources/glib/2.64/glib-2.64.3.tar.xz"
-  sha256 "fe9cbc97925d14c804935f067a3ad77ef55c0bbe9befe68962318f5a767ceb22"
+  
+    sha256 "fe9cbc97925d14c804935f067a3ad77ef55c0bbe9befe68962318f5a767ceb22"
   license "LGPL-2.1"
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/glib-2.64.3" 
+    sha256 "476c522dd5c0a2c57bd3774162864262f58fcd6c43e8ea9761d54c563c7f32ef" => :catalina
   end
 
   depends_on "meson" => :build
@@ -24,6 +27,7 @@ class Glib < Formula
   # id file.
   patch do
     url "https://raw.githubusercontent.com/Homebrew/formula-patches/6164294a75541c278f3863b111791376caa3ad26/glib/hardcoded-paths.diff"
+    
     sha256 "a57fec9e85758896ff5ec1ad483050651b59b7b77e0217459ea650704b7d422b"
   end
 
