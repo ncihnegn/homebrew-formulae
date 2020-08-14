@@ -1,7 +1,7 @@
 class Doctest < Formula
   desc "Fast feature-rich C++1x single-header testing framework"
   homepage "https://github.com/onqtam/doctest"
-  url "https://github.com/onqtam/doctest/archive/2.3.8.tar.gz"
+  url "https://github.com/onqtam/doctest/archive/2.4.0.tar.gz"
   head "https://github.com/onqtam/doctest.git"
 
   bottle do 
