@@ -1,13 +1,10 @@
 class Cli11 < Formula
   desc "A command line parser for C++11 and beyond"
   homepage "https://github.com/CLIUtils/CLI11"
-  url "https://github.com/CLIUtils/CLI11/archive/v1.9.0.tar.gz"
+  url "https://github.com/CLIUtils/CLI11/archive/v1.9.1.tar.gz"
   head "https://github.com/CLIUtils/CLI11.git"
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/cli11-1.9.0" 
-    cellar :any_skip_relocation 
-    sha256 "d048e00d06704f5e93fe4bbec31d4588b8f69d1cef09ba7767abbad31f0d1f47" => :catalina 
   end
 
   depends_on "cmake" => :build
