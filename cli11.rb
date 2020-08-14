@@ -5,6 +5,9 @@ class Cli11 < Formula
   head "https://github.com/CLIUtils/CLI11.git"
 
   bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/cli11-1.9.1" 
+    cellar :any_skip_relocation 
+    sha256 "03cecccd26c21498ab8c7f9f84c124789b68035338364e413d2a5d22a818f2f6" => :catalina
   end
 
   depends_on "cmake" => :build
