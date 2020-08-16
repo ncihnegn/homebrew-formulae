@@ -35,9 +35,12 @@ jobs:
           brew install --build-bottle ${{github.repository}}/${package} || \
           echo 0
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
+          echo ${bottle}
           dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
-          file_name=${dash_file_name/--/-}
+          echo ${dash_file_name}
           ls
+          file_name=${dash_file_name/--/-}
+          echo ${file_name}
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
           dsl=$(echo ${dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
