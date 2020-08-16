@@ -3,10 +3,9 @@ class Emacsmac < Formula
   homepage "https://www.gnu.org/software/emacs/"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.0.tar.gz"
   version "8.0"
+  revision 1
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0" 
-    sha256 "447ef8f57bd892b95a72a7e652e20bf23425b28a11c65932f11d84d58c8e6c89" => :catalina
   end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
@@ -54,6 +53,7 @@ class Emacsmac < Formula
 
   depends_on "d-bus" if build.with? "dbus"
   depends_on "gnutls"
+  depends_on "jansson"
   depends_on "libxml2" if build.with? "xml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
@@ -103,6 +103,7 @@ class Emacsmac < Formula
       "--with-mac",
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
+      "--with-json"
     ]
     args << "--with-modules" if build.with? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
