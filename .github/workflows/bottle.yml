@@ -36,7 +36,7 @@ jobs:
           echo 0
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           echo ${bottle}
-          dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-]*.tar.gz\).*/\1/')
+          dash_file_name=$(echo ${bottle} | sed 's/.* \([0-9a-z.-_]*.tar.gz\).*/\1/')
           echo ${dash_file_name}
           ls
           file_name=${dash_file_name/--/-}
