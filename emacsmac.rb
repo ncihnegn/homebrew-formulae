@@ -6,9 +6,8 @@ class Emacsmac < Formula
   revision 3
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0_2" 
-    rebuild 1 
-    sha256 "c9b88c8d1e17b477bcc7834760e1fde4890a5bd178ea35be40295d5ff732c70a" => :catalina
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0_3" 
+    sha256 "873323872ac5d8c87c90ad708f34e83beb383bb4a8533cf792545ce804019c3d" => :catalina
   end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
@@ -68,43 +67,51 @@ class Emacsmac < Formula
   emacs_icons_project_icons.each do |icon, sha|
     resource "emacs-icons-project-#{icon}" do
       url "https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/#{icon}.icns"
-      sha256 sha
+      
+    sha256 sha
     end
   end
 
   resource "modern-icon" do
     url "https://s3.amazonaws.com/emacs-mac-port/Emacs.icns.modern"
+    
     sha256 "eb819de2380d3e473329a4a5813fa1b4912ec284146c94f28bd24fbb79f8b2c5"
   end
 
   resource "spacemacs-icon" do
     url "https://github.com/nashamri/spacemacs-logo/blob/master/spacemacs.icns?raw=true"
+    
     sha256 "b3db8b7cfa4bc5bce24bc4dc1ede3b752c7186c7b54c09994eab5ec4eaa48900"
   end
 
   resource "gnu-head-icon" do
     url "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/icons/gnu-head.icns"
+    
     sha256 "b5899aaa3589b54c6f31aa081daf29d303047aa07b5ca1d0fd7f9333a829b6d3"
   end
 
   resource "emacs-sexy-icon" do
     url "https://emacs.sexy/img/Emacs.icns"
+    
     sha256 "7ab72feeeff0084e14bcb75a3e1040bdf738e0044361e7af8a67ebbaa58d852a"
   end
 
   # declare all patches as resource, workaround issue #214
   resource "natural-title-bar-patch" do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
+    
     sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
   end
 
   resource "no-title-bars-patch" do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
+    
     sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
   end
 
   resource "multi-tty-patch" do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
+    
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
@@ -112,14 +119,16 @@ class Emacsmac < Formula
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
     patch do
       url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-26.2-rc1-mac-7.5-no-title-bar.patch"
-      sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
+      
+    sha256 "8319fd9568037c170f5990f608fb5bd82cd27346d1d605a83ac47d5a82da6066"
     end
   end
 
   if build.with? "natural-title-bar"
     patch do
       url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/emacs-mac-title-bar-7.4.patch"
-      sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
+      
+    sha256 "5512577b3495ed10442883e79b2ec1c8a1325495698eee8c1f0a0d90574de897"
     end
   end
 
@@ -128,6 +137,7 @@ class Emacsmac < Formula
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
   patch do
     url "https://raw.githubusercontent.com/railwaycat/homebrew-emacsmacport/master/build-scripts/multi-tty-27.diff"
+    
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
