@@ -6,8 +6,9 @@ class Emacsmac < Formula
   revision 3
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0_1" 
-    sha256 "b4ec755df3d2fa5820620a3977cc25ac26ec980761f18646e05b1e980962c785" => :catalina
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0_2" 
+    rebuild 1 
+    sha256 "c9b88c8d1e17b477bcc7834760e1fde4890a5bd178ea35be40295d5ff732c70a" => :catalina
   end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
