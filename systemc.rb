@@ -4,8 +4,9 @@ class Systemc < Formula
   url "https://github.com/ncihnegn/systemc/archive/v2.3.3.1.tar.gz"
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/systemc-2.3.3" 
-    sha256 "2980a3a8b8b1b0dba3259897856347dee1c152431e064b2b8229eeea224b63c8" => :catalina
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/systemc-2.3.3.1" 
+    rebuild 1 
+    sha256 "f56e3c1d5484d405f9207011f605c545341270581f4bbdb4d6dc3e06cdbbd20e" => :catalina
   end
 
   depends_on "cmake" => :build
