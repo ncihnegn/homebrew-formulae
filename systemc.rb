@@ -1,7 +1,7 @@
 class Systemc < Formula
   desc "Core SystemC language and examples"
   homepage "https://accellera.org/"
-  url "https://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.3.tar.gz"
+  url "https://github.com/ncihnegn/systemc/archive/v2.3.3.1.tar.gz"
 
   bottle do 
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/systemc-2.3.3" 
