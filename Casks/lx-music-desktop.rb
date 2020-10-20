@@ -1,6 +1,6 @@
 cask 'lx-music-desktop' do
-  version '1.2.0'
-  sha256 "622d02b9ae1aec125618e7f43ee05e8bc20caedc88141418da9c929553c306b4"
+  version '1.2.2'
+  sha256 "638ed654632457ba5835d88e9fed8b947d318019ce1a44236729d9d91b085414"
 
   url "https://github.com/lyswhut/lx-music-desktop/releases/download/v#{version}/lx-music-desktop-#{version}.dmg",
       user_agent: :fake
