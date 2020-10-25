@@ -14,11 +14,11 @@ class Gccemacs < Formula
   head do
     url "https://github.com/emacs-mirror/emacs.git"
 
-    depends_on "autoconf" => :build
-    depends_on "gnu-sed" => :build
-    depends_on "texinfo" => :build
   end
 
+  depends_on "autoconf" => :build
+  depends_on "gnu-sed" => :build
+  depends_on "texinfo" => :build
   depends_on "pkg-config" => :build
   depends_on "gnutls"
   depends_on "jansson"
