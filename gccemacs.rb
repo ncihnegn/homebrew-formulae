@@ -47,10 +47,8 @@ class Gccemacs < Formula
       --with-nativecomp
     ]
 
-    if build.head?
-      ENV.prepend_path "PATH", Formula["gnu-sed"].opt_libexec/"gnubin"
-      system "./autogen.sh"
-    end
+    ENV.prepend_path "PATH", Formula["gnu-sed"].opt_libexec/"gnubin"
+    system "./autogen.sh"
 
     File.write "lisp/site-load.el", <<~EOS
       (setq exec-path (delete nil
@@ -61,7 +59,7 @@ class Gccemacs < Formula
     EOS
 
     system "./configure", *args
-    system "make"
+    system "make bootstrap"
     system "make", "install"
 
     # Follow MacPorts and don't install ctags from Emacs. This allows Vim
