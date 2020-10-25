@@ -24,7 +24,7 @@ jobs:
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo $tag | cut -d'-' -f1)
-          brew tap ${{github.repository}} && brew update
+          brew tap ${{github.repository}}
           deps=$(brew deps ${{github.repository}}/${package})
           ([[ ! -z "$deps" ]] && brew upgrade ${deps}) || exit 0
       - name: Build
