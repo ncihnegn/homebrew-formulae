@@ -43,7 +43,6 @@ class Gccemacs < Formula
       --with-xml2
       --without-dbus
       --with-modules
-      --without-ns
       --without-imagemagick
       --with-nativecomp
     ]
