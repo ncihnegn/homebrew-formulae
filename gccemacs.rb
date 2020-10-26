@@ -58,7 +58,7 @@ class Gccemacs < Formula
           exec-path)))
     EOS
 
-    system "LDFLAGS=-L/usr/local/lib/gcc/10/", ./configure", *args
+    system "LDFLAGS=-L/usr/local/lib/gcc/10/", "./configure", *args
     system "make bootstrap"
     system "make", "install"
 
