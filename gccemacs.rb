@@ -8,7 +8,9 @@ class Gccemacs < Formula
     url :stable
   end
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/gccemacs-28.0.50.201024" 
+    sha256 "3605004da964b576d14b9b2c76f9d3ea3d6de77e14f507d0e8f3fa4d7a9c303f" => :catalina
   end
 
   head do
