@@ -23,6 +23,7 @@ class Gccemacs < Formula
   depends_on "gnutls"
   depends_on "jansson"
   depends_on "libgccjit"
+  depends_on "gcc"
 
   uses_from_macos "libxml2"
   uses_from_macos "ncurses"
