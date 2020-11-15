@@ -61,8 +61,8 @@ jobs:
           git config --global user.email "github-action@users.noreply.github.com"
           dsl="${{steps.build.outputs.dsl}}"
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
-          perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i ${package}.rb
-          sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' ${package}.rb
+          perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i Formula/${package}.rb
+          sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' Formula/${package}.rb
           git add Formula/${package}.rb
           git commit -m "Add ${tag} bottle DSL"
           git push origin HEAD:master
