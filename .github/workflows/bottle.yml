@@ -32,7 +32,7 @@ jobs:
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
           package=$(echo $tag | cut -d'-' -f1)
-          brew install --build-bottle ${{github.repository}}/${package} || \
+          brew install -s --build-bottle ${{github.repository}}/${package} || \
           echo 0
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           echo ${bottle}
