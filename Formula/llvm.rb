@@ -9,11 +9,13 @@ class Llvm < Formula
     url "https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/llvm-project-11.0.0.tar.xz"
     
     
+    
     sha256 "b7b639fc675fa1c86dd6d0bc32267be9eb34451748d2efd03f674b773000e92b"
 
     patch do
       url "https://github.com/llvm/llvm-project/commit/c86f56e32e724c6018e579bb2bc11e667c96fc96.patch?full_index=1"
       
+    
     
     sha256 "6e13e01b4f9037bb6f43f96cb752d23b367fe7db4b66d9bf2a4aeab9234b740a"
     end
@@ -22,6 +24,7 @@ class Llvm < Formula
       url "https://github.com/llvm/llvm-project/commit/31e5f7120bdd2f76337686d9d169b1c00e6ee69c.patch?full_index=1"
       
     
+    
     sha256 "f025110aa6bf80bd46d64a0e2b1e2064d165353cd7893bef570b6afba7e90b4d"
     end
 
@@ -29,12 +32,14 @@ class Llvm < Formula
       url "https://github.com/llvm/llvm-project/commit/3c7bfbd6831b2144229734892182d403e46d7baf.patch?full_index=1"
       
     
+    
     sha256 "62014ddad6d5c485ecedafe3277fe7978f3f61c940976e3e642536726abaeb68"
     end
 
     patch do
       url "https://github.com/llvm/llvm-project/commit/c4d7536136b331bada079b2afbb2bd09ad8296bf.patch?full_index=1"
       
+    
     
     sha256 "2b894cbaf990510969bf149697882c86a068a1d704e749afa5d7b71b6ee2eb9f"
     end
@@ -48,7 +53,7 @@ class Llvm < Formula
   bottle do 
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm-11.0.0" 
     cellar :any 
-    rebuild 1 
+    rebuild 2 
     sha256 "07f946e758c8175734a182b7db8afe6906ac900e11af010bd09599d1f30fb2a9" => :catalina
   end
 
@@ -76,6 +81,7 @@ class Llvm < Formula
   # https://bugs.llvm.org/show_bug.cgi?id=47609
   patch do
     url "https://raw.githubusercontent.com/Homebrew/formula-patches/6166a68c/llvm/openmp_arm.patch"
+    
     
     
     sha256 "70fe3836b423e593688cd1cc7a3d76ee6406e64b9909f1a2f780c6f018f89b1e"
