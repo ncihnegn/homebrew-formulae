@@ -11,11 +11,13 @@ class Llvm < Formula
     
     
     
+    
     sha256 "b7b639fc675fa1c86dd6d0bc32267be9eb34451748d2efd03f674b773000e92b"
 
     patch do
       url "https://github.com/llvm/llvm-project/commit/c86f56e32e724c6018e579bb2bc11e667c96fc96.patch?full_index=1"
       
+    
     
     
     
@@ -28,6 +30,7 @@ class Llvm < Formula
     
     
     
+    
     sha256 "f025110aa6bf80bd46d64a0e2b1e2064d165353cd7893bef570b6afba7e90b4d"
     end
 
@@ -37,12 +40,14 @@ class Llvm < Formula
     
     
     
+    
     sha256 "62014ddad6d5c485ecedafe3277fe7978f3f61c940976e3e642536726abaeb68"
     end
 
     patch do
       url "https://github.com/llvm/llvm-project/commit/c4d7536136b331bada079b2afbb2bd09ad8296bf.patch?full_index=1"
       
+    
     
     
     
@@ -58,8 +63,8 @@ class Llvm < Formula
   bottle do 
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm-11.0.0" 
     cellar :any 
-    rebuild 3 
-    sha256 "97ebb2fe366f452727097f24e98ada7e0fab2d0f0094adad61e9de4ff71bd9f4" => :catalina
+    rebuild 4 
+    sha256 "2a4bf212e63131a01011be6397fc2fabc93d07370b6168744414bb2d2cd0e9a9" => :catalina
   end
 
   # Clang cannot find system headers if Xcode CLT is not installed
@@ -86,6 +91,7 @@ class Llvm < Formula
   # https://bugs.llvm.org/show_bug.cgi?id=47609
   patch do
     url "https://raw.githubusercontent.com/Homebrew/formula-patches/6166a68c/llvm/openmp_arm.patch"
+    
     
     
     
