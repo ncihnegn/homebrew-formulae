@@ -11,7 +11,9 @@ class Iwyu < Formula
   depends_on "llvm"
   depends_on "cmake" => :build
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/iwyu-0.15" 
+    sha256 "2f9c7d8e1004704145a1cd3823435db29cdbb237b34a0e6af593c708e84b10fa" => :catalina
   end
 
   def install
