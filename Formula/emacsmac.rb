@@ -1,13 +1,10 @@
 class Emacsmac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.0.tar.gz"
-  version "8.0"
-  revision 3
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.1-mac-8.1.tar.gz"
+  version "8.1"
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.0_3" 
-    sha256 "873323872ac5d8c87c90ad708f34e83beb383bb4a8533cf792545ce804019c3d" => :catalina
   end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
