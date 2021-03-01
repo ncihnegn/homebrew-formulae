@@ -10,8 +10,8 @@ class Harfbuzz < Formula
 
   bottle do 
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/harfbuzz-2.7.4" 
-    sha256 
-    cellar: :any, catalina: "0d72b45ce10ca76535a068f88c814b6e164b19718165c3ebd64c7892ec82891b" end
+    sha256 catalina: "0d72b45ce10ca76535a068f88c814b6e164b19718165c3ebd64c7892ec82891b"
+  end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
