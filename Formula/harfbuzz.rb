@@ -1,16 +1,12 @@
 class Harfbuzz < Formula
   desc "OpenType text shaping engine"
   homepage "https://github.com/harfbuzz/harfbuzz"
-  url "https://github.com/harfbuzz/harfbuzz/archive/2.7.4.tar.gz"
-  
-    sha256 "daff8a4003ac420a8550760ed303ce33b310c8ea17b7f15b307d1969cabcebcb"
+  url "https://github.com/harfbuzz/harfbuzz/archive/2.8.0.tar.gz"
+  sha256 "9444358d1d8c1884c3a25b02fe702bd244172c4fdd2e98f5a165bc0987ef34f6"
   license "MIT"
-  revision 1
   head "https://github.com/harfbuzz/harfbuzz.git"
 
-  bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/harfbuzz-2.7.4" 
-    sha256 catalina: "0d72b45ce10ca76535a068f88c814b6e164b19718165c3ebd64c7892ec82891b"
+  bottle do
   end
 
   depends_on "meson" => :build
@@ -24,7 +20,6 @@ class Harfbuzz < Formula
 
   resource "ttf" do
     url "https://github.com/harfbuzz/harfbuzz/raw/fc0daafab0336b847ac14682e581a8838f36a0bf/test/shaping/fonts/sha1sum/270b89df543a7e48e206a2d830c0e10e5265c630.ttf"
-    
     sha256 "9535d35dab9e002963eef56757c46881f6b3d3b27db24eefcc80929781856c77"
   end
 
