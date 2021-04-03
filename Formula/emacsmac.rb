@@ -1,13 +1,11 @@
 class Emacsmac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
+  #url "https://github.com/ncihnegn/emacs-mac/archive/6bf22c933df642f20969b17036f8da784276f588.zip"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.2.tar.gz"
   version "8.2"
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/emacsmac-8.1" 
-    rebuild 1 
-    sha256 "fb776160acaefa49527e462fbe2161fad83c72a83cd55afa713e581f0e990571" => :catalina
   end
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
@@ -21,7 +19,7 @@ class Emacsmac < Formula
   option "with-natural-title-bar",
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
-  option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
+  #option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
@@ -58,6 +56,10 @@ class Emacsmac < Formula
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
+  patch do
+    url "https://github.com/d12frosted/homebrew-emacs-plus/raw/master/patches/emacs-27/arm.patch"
+  end
+
   def install
     args = [
       "--enable-locallisppath=#{HOMEBREW_PREFIX}/share/emacs/site-lisp",
@@ -66,10 +68,11 @@ class Emacsmac < Formula
       "--with-mac",
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
+      "--with-mac-metal",
     ]
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
-    args << "--with-mac-metal" if build.with? "mac-metal"
+    #args << "--with-mac-metal" if build.with? "mac-metal"
 
     system "./autogen.sh"
     system "./configure", *args
