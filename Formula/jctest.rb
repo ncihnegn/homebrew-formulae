@@ -1,8 +1,8 @@
 class Jctest < Formula
-  desc "A tiny and fast C/C++ single header only test framework"
+  desc "Tiny and fast C/C++ single header only test framework"
   homepage "https://github.com/JCash/jctest"
   url "https://github.com/JCash/jctest/archive/v0.5.tar.gz"
-  head "https://github.com/ncihnegn/jctest.git", :branch => "dev"
+  head "https://github.com/ncihnegn/jctest.git", branch: "dev"
 
   depends_on "cmake" => :build
 

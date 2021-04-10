@@ -4,13 +4,12 @@ class Msgsl < Formula
   url "https://github.com/Microsoft/GSL/archive/v3.1.0.tar.gz"
   head "https://github.com/ncihnegn/GSL.git"
 
-  depends_on "cmake" => :build
-
-  bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/msgsl-3.1.0" 
-    cellar :any_skip_relocation 
-    sha256 "e6b991fabff2e1d27e0533d451319d5a157d38775407ba0eeeeb3d09335038d5" => :catalina
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/msgsl-3.1.0"
+    sha256 cellar: :any_skip_relocation, catalina: "e6b991fabff2e1d27e0533d451319d5a157d38775407ba0eeeeb3d09335038d5"
   end
+
+  depends_on "cmake" => :build
 
   def install
     system "cmake", ".", "-DGSL_TEST=false", *std_cmake_args

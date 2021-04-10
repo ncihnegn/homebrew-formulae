@@ -4,11 +4,10 @@ class Doctest < Formula
   url "https://github.com/onqtam/doctest/archive/2.4.0.tar.gz"
   head "https://github.com/onqtam/doctest.git"
 
-  bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/doctest-2.4.0" 
-    cellar :any_skip_relocation 
-    rebuild 1 
-    sha256 "5fe73ef4d15c7a49063b145e632ae9f48e52296df20acf5f0844af2a91bded9f" => :catalina
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/doctest-2.4.0"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, catalina: "5fe73ef4d15c7a49063b145e632ae9f48e52296df20acf5f0844af2a91bded9f"
   end
 
   depends_on "cmake" => :build

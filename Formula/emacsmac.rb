@@ -1,14 +1,14 @@
 class Emacsmac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  #url "https://github.com/ncihnegn/emacs-mac/archive/6bf22c933df642f20969b17036f8da784276f588.zip"
+  # url "https://github.com/ncihnegn/emacs-mac/archive/6bf22c933df642f20969b17036f8da784276f588.zip"
   url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.2.tar.gz"
   version "8.2"
 
-  bottle do 
-  end
-
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
+
+  bottle do
+  end
 
   option "with-dbus", "Build with d-bus support"
   option "without-modules", "Build without dynamic modules support"
@@ -19,19 +19,19 @@ class Emacsmac < Formula
   option "with-natural-title-bar",
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
-  #option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
+  # option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
-  depends_on "d-bus" if build.with? "dbus"
-  depends_on "glib" => :optional
-  depends_on "gnutls"
-  depends_on "imagemagick" => :optional
-  depends_on "jansson" => :recommended
-  depends_on "librsvg" if build.with? "rsvg"
-  depends_on "libxml2" => :recommended
   depends_on "pkg-config" => :build
-  depends_on "texinfo" => :"build"
+  depends_on "texinfo" => :build
+  depends_on "d-bus" if build.with? "dbus"
+  depends_on "gnutls"
+  depends_on "librsvg" if build.with? "rsvg"
+  depends_on "jansson" => :recommended
+  depends_on "libxml2" => :recommended
+  depends_on "glib" => :optional
+  depends_on "imagemagick" => :optional
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
@@ -72,7 +72,7 @@ class Emacsmac < Formula
     ]
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
-    #args << "--with-mac-metal" if build.with? "mac-metal"
+    # args << "--with-mac-metal" if build.with? "mac-metal"
 
     system "./autogen.sh"
     system "./configure", *args

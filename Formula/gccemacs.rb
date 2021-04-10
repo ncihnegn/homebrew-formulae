@@ -8,24 +8,23 @@ class Gccemacs < Formula
     url :stable
   end
 
-  bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/gccemacs-28.0.50.201024" 
-    sha256 "3605004da964b576d14b9b2c76f9d3ea3d6de77e14f507d0e8f3fa4d7a9c303f" => :catalina
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/gccemacs-28.0.50.201024"
+    sha256 catalina: "3605004da964b576d14b9b2c76f9d3ea3d6de77e14f507d0e8f3fa4d7a9c303f"
   end
 
   head do
     url "https://github.com/emacs-mirror/emacs.git"
-
   end
 
   depends_on "autoconf" => :build
   depends_on "gnu-sed" => :build
-  depends_on "texinfo" => :build
   depends_on "pkg-config" => :build
+  depends_on "texinfo" => :build
+  depends_on "gcc"
   depends_on "gnutls"
   depends_on "jansson"
   depends_on "libgccjit"
-  depends_on "gcc"
 
   uses_from_macos "libxml2"
   uses_from_macos "ncurses"
@@ -61,9 +60,10 @@ class Gccemacs < Formula
     EOS
 
     ENV.append_path "LIBRARY_PATH", "/usr/local/lib/gcc/10"
-    ENV.append_path "LIBRARY_PATH", "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib"
+    ENV.append_path "LIBRARY_PATH",
+"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib"
     system "./configure", *args
-    system "make bootstrap"
+    system "make", "bootstrap"
     system "make", "install"
 
     # Follow MacPorts and don't install ctags from Emacs. This allows Vim

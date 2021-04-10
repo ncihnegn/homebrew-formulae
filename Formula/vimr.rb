@@ -3,8 +3,7 @@ class Vimr < Formula
   homepage "https://vimr.org"
   url "https://github.com/ncihnegn/vimr/archive/v0.32.0-347c.tar.gz"
 
-  resource "neovim" do
-    url "https://github.com/ncihnegn/neovim/archive/v0.4.3r.tar.gz"
+  bottle do
   end
 
   depends_on "automake" => :build
@@ -16,16 +15,17 @@ class Vimr < Formula
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "python" => :build
-  depends_on :xcode => :build
+  depends_on xcode: :build
 
-  bottle do
+  resource "neovim" do
+    url "https://github.com/ncihnegn/neovim/archive/v0.4.3r.tar.gz"
   end
 
   def install
     neovim_buildpath = buildpath/"NvimView/neovim"
     neovim_buildpath.install resource("neovim")
 
-    system "code_sign=false carthage_update=true use_carthage_cache=false ./bin/build_vimr.sh"
+    system "code_sign=false", "carthage_update=true", "use_carthage_cache=false", "./bin/build_vimr.sh"
     prefix.install build/Build/Products/Release/VimR.app
   end
 
