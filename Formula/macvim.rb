@@ -2,17 +2,12 @@
 class Macvim < Formula
   desc "GUI for vim, made for macOS"
   homepage "https://github.com/macvim-dev/macvim"
-  url "https://github.com/macvim-dev/macvim/archive/snapshot-171.tar.gz"
-  version "8.2.1710"
-  sha256 "1ef6766abefc6d67dd717f1a92aa294304817a462a98153f2696e83340ffce25"
+  url "https://github.com/macvim-dev/macvim/archive/snapshot-172.tar.gz"
+  version "8.2.1720"
   license "Vim"
   head "https://github.com/macvim-dev/macvim.git"
 
   bottle do
-    sha256 arm64_big_sur: "ed323efb92c6362644cd669c2a840f1dcde70aa164782e03b6119f005e51946f"
-    sha256 big_sur:       "360c034cfc91be517d3bfc01299cd0ae771c60a60b23ce5ebda65f06b4768590"
-    sha256 catalina:      "59f0665d4fc615892a91bfb4bdc63199ee785b9baf5f5cffae12b57d9a2778e2"
-    sha256 mojave:        "512f4e05566da487a88ecf525ac1d605acdf9e27ae7f338bd33a0819be084dae"
   end
 
   depends_on xcode: :build
@@ -20,7 +15,6 @@ class Macvim < Formula
   depends_on "gettext"
   depends_on "lua"
   depends_on :macos
-  depends_on "python@3.9"
 
   conflicts_with "vim",
     because: "vim and macvim both install vi* binaries"
@@ -47,7 +41,7 @@ class Macvim < Formula
                           "--enable-luainterp",
                           "--with-lua-prefix=#{Formula["lua"].opt_prefix}",
                           "--enable-luainterp",
-                          "--enable-python3interp",
+                          "--enable-python3interp=dynamic",
                           "--disable-sparkle",
                           "--with-macarchs=#{Hardware::CPU.arch}"
     system "make"
