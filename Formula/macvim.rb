@@ -10,6 +10,9 @@ class Macvim < Formula
   bottle do
   end
 
+  uses_from_macos "python3"
+  uses_from_macos "ruby"
+
   depends_on xcode: :build
   depends_on "cscope"
   depends_on "gettext"
@@ -32,6 +35,7 @@ class Macvim < Formula
     system "./configure", "--with-features=huge",
                           "--enable-multibyte",
                           "--enable-perlinterp",
+                          "--enable-rubyinterp",
                           "--enable-tclinterp",
                           "--enable-terminal",
                           "--with-tlib=ncurses",
