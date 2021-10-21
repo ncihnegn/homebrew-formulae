@@ -6,7 +6,10 @@ class Ccache < Formula
   license "GPL-3.0-or-later"
   head "https://github.com/ccache/ccache.git", branch: "master"
 
-  bottle do
+  bottle do 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/ccache@4.4.2" 
+    rebuild 1 sha256 
+    cellar: :any, big_sur: "828eafcf9129ac65d2b75bc2b2cbdc813f6d5c53a17729ae998bc45913449c0d"
   end
 
   depends_on "cmake" => :build
@@ -16,6 +19,7 @@ class Ccache < Formula
 
   on_linux do
     depends_on "gcc"
+ 
   end
 
   fails_with gcc: "5"
@@ -31,7 +35,8 @@ class Ccache < Formula
     # See https://github.com/Homebrew/homebrew-core/pull/83900#issuecomment-90624064
     with_env(CC: DevelopmentTools.locate(DevelopmentTools.default_compiler)) do
       system "ctest", "-j#{ENV.make_jobs}", "--test-dir", "build"
-    end
+   
+  end
 
     system "cmake", "--install", "build"
 
@@ -52,7 +57,9 @@ class Ccache < Formula
       g++-5 g++-6 g++-7 g++-8 g++-9 g++-10 g++-11
     ].each do |prog|
       libexec.install_symlink bin/"ccache" => prog
-    end
+   
+  end
+ 
   end
 
   def caveats
@@ -68,11 +75,13 @@ class Ccache < Formula
       NOTE: ccache can prevent some software from compiling.
       ALSO NOTE: The brew command, by design, will never use ccache.
     EOS
+ 
   end
 
   test do
     ENV.prepend_path "PATH", opt_libexec
     assert_equal "#{opt_libexec}/gcc", shell_output("which gcc").chomp
     system "#{bin}/ccache", "-s"
+ 
   end
 end
