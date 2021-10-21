@@ -23,7 +23,7 @@ jobs:
       - name: Prepare
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
-          package=$(echo $tag | cut -d'-' -f1)
+          package=$(echo $tag | cut -d'@' -f1)
           brew uninstall --ignore-dependencies ${package} && brew cleanup || echo 0
           brew tap ${{github.repository}}
           deps=$(brew deps ${{github.repository}}/${package})
@@ -32,7 +32,7 @@ jobs:
         id: build
         run: |
           tag=$(echo ${{github.ref}} | cut -c11-)
-          package=$(echo $tag | cut -d'-' -f1)
+          package=$(echo $tag | cut -d'@' -f1)
           brew install --build-bottle ${{github.repository}}/${package} || echo 0
           bottle=$(brew bottle ${{github.repository}}/${package} --root-url https://github.com/${{github.repository}}/releases/download/${tag})
           echo ${bottle}
@@ -60,7 +60,8 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "github-action@users.noreply.github.com"
           dsl="${{steps.build.outputs.dsl}}"
-          package=$(echo ${{github.ref}} | cut -c11- | cut -d'-' -f1)
+          echo ${dsl}
+          package=$(echo ${{github.ref}} | cut -c11- | cut -d'@' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i Formula/${package}.rb
           sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' Formula/${package}.rb
           git add Formula/${package}.rb
