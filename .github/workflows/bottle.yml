@@ -43,7 +43,7 @@ jobs:
           echo ${file_name}
           mv ${dash_file_name} ${file_name}
           dsl=$(echo ${bottle} | sed 's/.*\(bottle do.*end\)/\1/')
-          dsl=$(echo ${dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g')
+          dsl=$(echo ${dsl} | sed -e 's/"/\\"/g' -e 's#/#\\/#g' -e 's/@/\\@/g')
           echo ::set-output name=file_name::${file_name}
           echo ::set-output name=dsl::${dsl}
       - name: Upload
@@ -63,7 +63,7 @@ jobs:
           echo ${dsl}
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'@' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i Formula/${package}.rb
-          sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/\(sha256.*\)/\'$'\n    &/' -e 's/catalina end/catalina\'$'\n  end/' Formula/${package}.rb
+          sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/ end/\'$'\n  end/' Formula/${package}.rb
           git add Formula/${package}.rb
           git commit -m "Add ${tag} bottle DSL"
           git push origin HEAD:master

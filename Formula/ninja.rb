@@ -13,10 +13,9 @@ class Ninja < Formula
   end
 
   bottle do 
-    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/ninja.10.2" 
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/ninja@1.10.2"
     rebuild 3 
-    sha256 
-    cellar: :any_skip_relocation, big_sur: "27813ddbbacba6ae043436d831b7c1034d306069c4f0aad1c7685ed51d2de2f9" end
+    sha256 cellar: :any_skip_relocation, big_sur: "27813ddbbacba6ae043436d831b7c1034d306069c4f0aad1c7685ed51d2de2f9" end
 
   uses_from_macos "curl" => :test
   uses_from_macos "python"
