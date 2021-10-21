@@ -63,7 +63,7 @@ jobs:
           echo ${dsl}
           package=$(echo ${{github.ref}} | cut -c11- | cut -d'@' -f1)
           perl -0777p -e "s/bottle do.*?end/${dsl}/mgs" -i Formula/${package}.rb
-          sed -i.bak -e 's/root_url/\'$'\n    &/' -e 's/cellar/\'$'\n    &/' -e 's/rebuild/\'$'\n    &/' -e 's/ end/\'$'\n  end/' Formula/${package}.rb
+          sed -i.bak -e 's/ root_url/\'$'\n   &/' -e 's/ sha256/\'$'\n   &/' -e 's/ rebuild/\'$'\n   &/' -e 's/" end/"\'$'\n  end/' Formula/${package}.rb
           git add Formula/${package}.rb
           git commit -m "Add ${tag} bottle DSL"
           git push origin HEAD:master

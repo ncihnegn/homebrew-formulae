@@ -2,8 +2,7 @@ class Node < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
   url "https://nodejs.org/dist/v16.12.0/node-v16.12.0.tar.xz"
-  
-    sha256 "5f620a6a400901a6565aa0c07309cde3aab3dbaa765cecb934241de520d36bac"
+  sha256 "5f620a6a400901a6565aa0c07309cde3aab3dbaa765cecb934241de520d36bac"
   license "MIT"
   head "https://github.com/nodejs/node.git", branch: "master"
 
@@ -43,7 +42,6 @@ class Node < Formula
   # We will accept *important* npm patch releases when necessary.
   resource "npm" do
     url "https://registry.npmjs.org/npm/-/npm-8.1.0.tgz"
-    
     sha256 "301ddf6bdbd6f6abb36de144902914c6bb4d6f7463758774fdd0a9ee7c597d34"
   end
 
@@ -55,7 +53,6 @@ class Node < Formula
   # https://github.com/c-ares/c-ares/pull/417
   patch do
     url "https://github.com/nodejs/node/commit/8699aa501c4d4e1567ebe8901e5ec80cadaa9323.patch?full_index=1"
-    
     sha256 "678643c79258372d5054d3da16bc0c5db17130f151f0e72b6e4f20817987aac9"
   end
 
