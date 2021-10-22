@@ -23,6 +23,7 @@ class Llvm < Formula
   # https://llvm.org/docs/GettingStarted.html#requirement
   # We intentionally use Make instead of Ninja.
   # See: Homebrew/homebrew-core/issues/35513
+  depends_on "ccache" => :build
   depends_on "cmake" => :build
   depends_on "swig" => :build
   depends_on "xz" => :build
