@@ -130,7 +130,7 @@ class Llvm < Formula
       args << "-DDEFAULT_SYSROOT=#{macos_sdk}" if macos_sdk
 
       # Skip the PGO build on HEAD installs or non-bottle source builds
-      pgo_build = build.stable? && build.bottle?
+      #pgo_build = build.stable? && build.bottle?
     end
 
     if OS.linux?
