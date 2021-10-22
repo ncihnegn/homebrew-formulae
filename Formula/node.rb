@@ -14,7 +14,8 @@ class Node < Formula
   bottle do 
     root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/node-16.12.0_1" 
     rebuild 1 
-    sha256 big_sur: "f2096a0997be7fe1f5bdd7adfb5d74f0343db8f5c5e65adb17e1df903b96365f" end
+    sha256 big_sur: "f2096a0997be7fe1f5bdd7adfb5d74f0343db8f5c5e65adb17e1df903b96365f"
+  end
 
   depends_on "pkg-config" => :build
   depends_on "brotli"

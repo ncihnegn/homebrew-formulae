@@ -108,6 +108,7 @@ class Llvm < Formula
       -DPACKAGE_VENDOR=#{tap.user}
       -DBUG_REPORT_URL=#{tap.issues_url}
       -DCLANG_VENDOR_UTI=org.#{tap.user.downcase}.clang
+      -DLLVM_CCACHE_BUILD=ON
     ]
 
     macos_sdk = MacOS.sdk_path_if_needed
