@@ -23,7 +23,6 @@ class Llvm < Formula
   # https://llvm.org/docs/GettingStarted.html#requirement
   # We intentionally use Make instead of Ninja.
   # See: Homebrew/homebrew-core/issues/35513
-  depends_on "ccache" => :build
   depends_on "cmake" => :build
   depends_on "swig" => :build
   depends_on "xz" => :build
@@ -109,7 +108,6 @@ class Llvm < Formula
       -DPACKAGE_VENDOR=#{tap.user}
       -DBUG_REPORT_URL=#{tap.issues_url}
       -DCLANG_VENDOR_UTI=org.#{tap.user.downcase}.clang
-      -DLLVM_CCACHE_BUILD=ON
     ]
 
     macos_sdk = MacOS.sdk_path_if_needed
