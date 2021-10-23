@@ -6,6 +6,7 @@ class Llvm < Formula
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
   license "Apache-2.0" => { with: "LLVM-exception" }
   head "https://github.com/llvm/llvm-project.git", branch: "main"
+  revision 1
 
   livecheck do
     url :homepage
@@ -108,6 +109,8 @@ class Llvm < Formula
       -DPACKAGE_VENDOR=#{tap.user}
       -DBUG_REPORT_URL=#{tap.issues_url}
       -DCLANG_VENDOR_UTI=org.#{tap.user.downcase}.clang
+      -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+      -DCMAKE_RULE_MESSAGES:BOOL=OFF
     ]
 
     macos_sdk = MacOS.sdk_path_if_needed
