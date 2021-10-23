@@ -3,8 +3,9 @@ class Macvim < Formula
   desc "GUI for vim, made for macOS"
   homepage "https://github.com/macvim-dev/macvim"
   url "https://github.com/macvim-dev/macvim/archive/snapshot-172.tar.gz"
-  version "8.2.172"
+  version "8.2-172"
   license "Vim"
+  revision 1
   head "https://github.com/macvim-dev/macvim.git"
 
   bottle do
@@ -35,7 +36,7 @@ class Macvim < Formula
     system "./configure", "--with-features=huge",
                           "--enable-multibyte",
                           "--enable-perlinterp",
-                          "--enable-rubyinterp",
+                          "--enable-rubyinterp=dynamic",
                           "--enable-tclinterp",
                           "--enable-terminal",
                           "--with-tlib=ncurses",
@@ -61,6 +62,7 @@ class Macvim < Formula
 
   test do
     output = shell_output("#{bin}/mvim --version")
+    assert_match "+ruby", output
     assert_match "+gettext", output
 
     # Simple test to check if MacVim was linked to Homebrew's Python 3
