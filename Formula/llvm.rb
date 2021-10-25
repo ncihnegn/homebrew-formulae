@@ -2,7 +2,8 @@ class Llvm < Formula
   desc "Next-gen compiler infrastructure"
   homepage "https://llvm.org/"
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz"
-  sha256 "6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3"
+ 
+    sha256 "6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3"
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
   license "Apache-2.0" => { with: "LLVM-exception" }
   head "https://github.com/llvm/llvm-project.git", branch: "main"
@@ -13,6 +14,9 @@ class Llvm < Formula
   end
 
   bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm@13.0.0"
+    rebuild 1
+    sha256 cellar: :any, big_sur: "7121e2693a5698300c828a60ce07beabf63bacc7ec238d3924e5ec402403c217"
   end
 
   # Clang cannot find system headers if Xcode CLT is not installed
