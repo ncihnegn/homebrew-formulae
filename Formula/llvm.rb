@@ -13,6 +13,9 @@ class Llvm < Formula
   end
 
   bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/llvm@13.0.1"
+    rebuild 1
+    sha256 cellar: :any, big_sur: "4e2e5c0fe92dd6a13abcf466a2d6cd9e9c21e36fb8e16dc9906c27b8fbd90cb0"
   end
 
   # Clang cannot find system headers if Xcode CLT is not installed
