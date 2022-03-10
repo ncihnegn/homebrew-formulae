@@ -11,7 +11,10 @@ class Node < Formula
     regex(%r{href=["']?v?(\d+(?:\.\d+)+)/?["' >]}i)
   end
 
-  bottle do 
+  bottle do
+    root_url "https://github.com/ncihnegn/homebrew-formulae/releases/download/node@17.6.0"
+    rebuild 1
+    sha256 cellar: :any, big_sur: "9d0ff74b3136c5d5ed87aace400816d849514e0edbef2aa4e47dbfca1068f119"
   end
 
   depends_on "pkg-config" => :build
