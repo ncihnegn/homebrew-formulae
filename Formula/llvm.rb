@@ -128,7 +128,7 @@ class Llvm < Formula
       args << "-DDEFAULT_SYSROOT=#{macos_sdk}" if macos_sdk
 
       # Skip the PGO build on HEAD installs or non-bottle source builds
-      build.stable? && build.bottle?
+      build.stable? && build.bottle? && false
     else
       ENV.append "CXXFLAGS", "-fpermissive -Wno-free-nonheap-object"
       ENV.append "CFLAGS", "-fpermissive -Wno-free-nonheap-object"
