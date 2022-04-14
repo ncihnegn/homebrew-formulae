@@ -1,9 +1,8 @@
 class Emacsmac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  # url "https://github.com/ncihnegn/emacs-mac/archive/6bf22c933df642f20969b17036f8da784276f588.zip"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-27.2-mac-8.2.tar.gz"
-  version "8.2"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.1-mac-9.0.tar.gz"
+  version "9.0"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -19,19 +18,20 @@ class Emacsmac < Formula
   option "with-natural-title-bar",
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
-  # option "with-mac-metal", "use Metal framework in application-side double buffering (experimental)"
+  option "without-mac-metal", "Don't use Metal framework in application-side double buffering (experimental)"
+  option "without-native-compilation", "Build with native compilation"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "d-bus" if build.with? "dbus"
+  depends_on "glib" => :optional
+  depends_on "gnutls"
+  depends_on "imagemagick" => :optional
+  depends_on "jansson" => :recommended
+  depends_on "librsvg" if build.with? "rsvg"
+  depends_on "libxml2" => :recommended
   depends_on "pkg-config" => :build
   depends_on "texinfo" => :build
-  depends_on "d-bus" if build.with? "dbus"
-  depends_on "gnutls"
-  depends_on "librsvg" if build.with? "rsvg"
-  depends_on "jansson" => :recommended
-  depends_on "libxml2" => :recommended
-  depends_on "glib" => :optional
-  depends_on "imagemagick" => :optional
 
   if build.with? "no-title-bars"
     # odie "--with-no-title-bars patch not supported on --HEAD" if build.head?
@@ -48,6 +48,11 @@ class Emacsmac < Formula
     end
   end
 
+  if build.with? "native-compilation"
+    depends_on "libgccjit" => :recommended
+    depends_on "gcc" => :build
+  end
+
   # patch for multi-tty support, see the following links for details
   # https://bitbucket.org/mituharu/emacs-mac/pull-requests/2/add-multi-tty-support-to-be-on-par-with/diff
   # https://ylluminarious.github.io/2019/05/23/how-to-fix-the-emacs-mac-port-for-multi-tty-access/
@@ -56,9 +61,9 @@ class Emacsmac < Formula
     sha256 "5a13e83e79ce9c4a970ff0273e9a3a07403cc07f7333a0022b91c191200155a1"
   end
 
-  patch do
-    url "https://github.com/d12frosted/homebrew-emacs-plus/raw/master/patches/emacs-27/arm.patch"
-  end
+  #patch do
+  #  url "https://github.com/d12frosted/homebrew-emacs-plus/raw/master/patches/emacs-27/arm.patch"
+  #end
 
   def install
     args = [
@@ -68,11 +73,24 @@ class Emacsmac < Formula
       "--with-mac",
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
-      "--with-mac-metal",
     ]
     args << "--with-modules" unless build.without? "modules"
     args << "--with-rsvg" if build.with? "rsvg"
-    # args << "--with-mac-metal" if build.with? "mac-metal"
+    args << "--with-mac-metal" unless build.without? "mac-metal"
+    args << "--with-native-compilation" unless build.without? "native-compilation"
+
+    if build.with? "native-compilation"
+      gcc_ver = Formula["gcc"].any_installed_version
+      gcc_ver_major = gcc_ver.major
+      gcc_lib="#{HOMEBREW_PREFIX}/lib/gcc/#{gcc_ver_major}"
+
+      ENV.append "CFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "CFLAGS", "-I#{Formula["libgccjit"].include}"
+
+      ENV.append "LDFLAGS", "-L#{gcc_lib}"
+      ENV.append "LDFLAGS", "-I#{Formula["gcc"].include}"
+      ENV.append "LDFLAGS", "-I#{Formula["libgccjit"].include}"
+    end
 
     system "./autogen.sh"
     system "./configure", *args
@@ -96,6 +114,12 @@ class Emacsmac < Formula
         #!/bin/bash
         exec #{prefix}/Emacs.app/Contents/MacOS/Emacs.sh "$@"
       EOS
+    end
+  end
+
+  def post_install
+    if build.with? "native-compilation"
+      ln_sf "#{Dir[opt_prefix/"lib/emacs/*"].first}/native-lisp", "#{opt_prefix}/Emacs.app/Contents/native-lisp"
     end
   end
 
