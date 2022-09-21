@@ -1,8 +1,8 @@
 class Emacsmac < Formula
   desc "YAMAMOTO Mitsuharu's Mac port of GNU Emacs"
   homepage "https://www.gnu.org/software/emacs/"
-  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.1-mac-9.0.tar.gz"
-  version "9.0"
+  url "https://bitbucket.org/mituharu/emacs-mac/get/emacs-28.2-mac-9.1.tar.gz"
+  version "9.1"
 
   head "https://bitbucket.org/mituharu/emacs-mac.git", branch: "work"
 
@@ -19,7 +19,7 @@ class Emacsmac < Formula
          "Build with a patch for title bar color inferred by theme (not recommended to use with --HEAD option)"
   option "with-starter", "Build with a starter script to start emacs GUI from CLI"
   option "without-mac-metal", "Don't use Metal framework in application-side double buffering (experimental)"
-  option "without-native-compilation", "Build with native compilation"
+  option "with-native-compilation", "Build with native compilation"
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
